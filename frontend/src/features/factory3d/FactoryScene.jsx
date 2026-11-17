@@ -13,6 +13,7 @@ export function FactoryScene({
   resetTrigger = 0,
   isFocusingSelected = false,
   cameraPreset = null,
+  onSelectPart = null,
 }) {
   const [layout, setLayout] = useState([])
   const { machines: liveMachines } = useLiveData()
@@ -184,6 +185,7 @@ export function FactoryScene({
               machine={m}
               isSelected={m.id === selectedMachineId}
               onSelect={selectMachine}
+              onSelectPart={onSelectPart}
               isImpactedDownstream={
                 (m.id === "MCH002" || m.id === "MCH003") &&
                 liveMachines.some((lm) => lm.id === "MCH001" && lm.severity !== "Normal")

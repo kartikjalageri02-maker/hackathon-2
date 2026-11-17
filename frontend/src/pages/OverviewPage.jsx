@@ -34,6 +34,7 @@ export function OverviewPage() {
   const [resetTrigger, setResetTrigger] = useState(0)
   const [focusSelected, setFocusSelected] = useState(false)
   const [cameraPreset, setCameraPreset] = useState("overview")
+  const [activeTouchedPart, setActiveTouchedPart] = useState(null)
   const [isSimulating, setIsSimulating] = useState(false)
 
   const isLoading = !factorySummary && machines.length === 0
@@ -236,6 +237,7 @@ export function OverviewPage() {
             resetTrigger={resetTrigger}
             isFocusingSelected={focusSelected}
             cameraPreset={cameraPreset}
+            onSelectPart={setActiveTouchedPart}
           />
 
           {/* Quick Simulation Trigger Overlay Dock (Bottom Left) */}
@@ -277,6 +279,29 @@ export function OverviewPage() {
               Reset
             </button>
           </div>
+
+          {/* Active Component 3D Touch Inspector Floating HUD (Bottom Right) */}
+          {activeTouchedPart && (
+            <div className="absolute right-4 bottom-4 z-20 max-w-sm floating-hud p-3.5 rounded-2xl animate-slide-up flex items-start gap-3">
+              <div className="p-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 mt-0.5">
+                <Cpu className="size-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <span className="caption-5 font-mono text-white/50">{activeTouchedPart.machineId} • COMPONENT</span>
+                  <button
+                    onClick={() => setActiveTouchedPart(null)}
+                    className="text-[#9B9B9B] hover:text-white transition-colors p-0.5"
+                  >
+                    <X className="size-3.5" />
+                  </button>
+                </div>
+                <h4 className="title-4 text-white font-semibold truncate mt-0.5">{activeTouchedPart.name}</h4>
+                <p className="caption-4 text-blue-400 font-mono mt-0.5 font-medium">{activeTouchedPart.telemetry}</p>
+                <p className="caption-5 text-[#9B9B9B] mt-1 line-clamp-2">{activeTouchedPart.spec}</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

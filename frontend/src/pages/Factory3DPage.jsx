@@ -18,6 +18,7 @@ export function Factory3DPage() {
   const [resetTrigger, setResetTrigger] = useState(0)
   const [focusSelected, setFocusSelected] = useState(false)
   const [cameraPreset, setCameraPreset] = useState("overview")
+  const [activeTouchedPart, setActiveTouchedPart] = useState(null)
   const [panelOpen, setPanelOpen] = useState(true)
 
   const selectedMachine = machines.find((m) => m.id === selectedMachineId)
@@ -44,7 +45,31 @@ export function Factory3DPage() {
         resetTrigger={resetTrigger}
         isFocusingSelected={focusSelected}
         cameraPreset={cameraPreset}
+        onSelectPart={setActiveTouchedPart}
       />
+
+      {/* Floating Active Component HUD Callout */}
+      {activeTouchedPart && (
+        <div className="absolute left-4 bottom-16 z-30 max-w-sm floating-hud p-3.5 rounded-2xl animate-slide-up flex items-start gap-3">
+          <div className="p-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 mt-0.5">
+            <Cube className="size-5" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between">
+              <span className="caption-5 font-mono text-white/50">{activeTouchedPart.machineId} • COMPONENT</span>
+              <button
+                onClick={() => setActiveTouchedPart(null)}
+                className="text-[#9B9B9B] hover:text-white transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+            <h4 className="title-4 text-white font-semibold truncate mt-0.5">{activeTouchedPart.name}</h4>
+            <p className="caption-4 text-blue-400 font-mono mt-0.5 font-medium">{activeTouchedPart.telemetry}</p>
+            <p className="caption-5 text-[#9B9B9B] mt-1 line-clamp-2">{activeTouchedPart.spec}</p>
+          </div>
+        </div>
+      )}
 
       {/* Floating Viewport Toolbar (Top Left) */}
       <div className="absolute left-4 top-4 z-20 flex flex-wrap items-center gap-2">
