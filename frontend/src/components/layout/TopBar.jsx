@@ -68,7 +68,7 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setMachineDropdownOpen(false)}
               />
-              <div className="absolute left-0 mt-1 w-64 bg-[#181818] border border-[#313131] rounded-xl shadow-2xl z-50 py-1">
+              <div className="absolute left-0 mt-1.5 w-64 bg-[#181818]/95 border border-[#313131] rounded-xl shadow-2xl z-50 py-1 backdrop-blur-md animate-dropdown-fade">
                 <div className="px-3 py-1.5 caption-4 text-[#9B9B9B] border-b border-[#313131]">
                   Select machine in line
                 </div>
@@ -168,7 +168,7 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setRoleDropdownOpen(false)}
               />
-              <div className="absolute right-0 mt-1 w-44 bg-[#181818] border border-[#313131] rounded-xl shadow-2xl z-50 py-1">
+              <div className="absolute right-0 mt-1.5 w-44 bg-[#181818]/95 border border-[#313131] rounded-xl shadow-2xl z-50 py-1 backdrop-blur-md animate-dropdown-fade">
                 <div className="px-3 py-1.5 caption-4 text-[#9B9B9B] border-b border-[#313131]">
                   Switch demo role
                 </div>

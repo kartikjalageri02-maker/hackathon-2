@@ -64,9 +64,9 @@ export function Sidebar({ currentStage = 11 }) {
                 to={item.path}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors duration-300",
+                    "flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 active:scale-[0.98]",
                     isActive
-                      ? "bg-[#272727] text-white font-medium border-l-2 border-white"
+                      ? "bg-[#272727] text-white font-medium border-l-2 border-white shadow-sm"
                       : "text-[#9B9B9B] hover:text-white hover:bg-[#181818]"
                   )
                 }

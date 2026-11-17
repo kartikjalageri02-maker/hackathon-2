@@ -33,6 +33,7 @@ export function OverviewPage() {
 
   const [resetTrigger, setResetTrigger] = useState(0)
   const [focusSelected, setFocusSelected] = useState(false)
+  const [cameraPreset, setCameraPreset] = useState("overview")
   const [isSimulating, setIsSimulating] = useState(false)
 
   const isLoading = !factorySummary && machines.length === 0
@@ -176,34 +177,65 @@ export function OverviewPage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-auto">
+          <div className="flex flex-wrap items-center gap-2 self-end sm:self-auto">
+            {/* View Presets */}
+            <div className="flex items-center rounded-lg bg-[#1F1F1F] border border-[#313131] p-0.5">
+              {[
+                { id: "overview", label: "Overview" },
+                { id: "isometric", label: "Isometric" },
+                { id: "top", label: "Top" },
+                { id: "front", label: "Front" },
+              ].map((view) => (
+                <button
+                  key={view.id}
+                  onClick={() => {
+                    setFocusSelected(false)
+                    setCameraPreset(view.id)
+                  }}
+                  className={cn(
+                    "px-2 py-0.5 rounded-md caption-4 transition-all duration-200 active:scale-[0.98]",
+                    cameraPreset === view.id && !focusSelected
+                      ? "bg-[#272727] text-white font-medium shadow-sm"
+                      : "text-[#9B9B9B] hover:text-white"
+                  )}
+                >
+                  {view.label}
+                </button>
+              ))}
+            </div>
+
             <button
               onClick={() => {
                 setFocusSelected(true)
-                setTimeout(() => setFocusSelected(false), 800)
+                setTimeout(() => setFocusSelected(false), 900)
               }}
-              className="flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] text-white caption-3 transition-colors duration-300"
+              className="flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] text-white caption-3 transition-all duration-300 active:scale-[0.98]"
               title="Focus selected machine"
             >
               <Crosshair className="size-3.5 text-[#9B9B9B]" />
               <span>Focus {selectedMachineId}</span>
             </button>
             <button
-              onClick={() => setResetTrigger(prev => prev + 1)}
-              className="flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] text-white caption-3 transition-colors duration-300"
+              onClick={() => {
+                setFocusSelected(false)
+                setCameraPreset("overview")
+                setResetTrigger((prev) => prev + 1)
+              }}
+              className="flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] text-white caption-3 transition-all duration-300 active:scale-[0.98]"
               title="Reset camera angle"
             >
               <ArrowsCounterClockwise className="size-3.5 text-[#9B9B9B]" />
-              <span>Reset Camera</span>
+              <span>Reset</span>
             </button>
           </div>
         </div>
 
         {/* 3D Canvas Box */}
-        <div className="w-full h-[400px] sm:h-[460px] relative">
+        <div className="w-full h-[420px] sm:h-[480px] relative">
           <FactoryScene
             resetTrigger={resetTrigger}
             isFocusingSelected={focusSelected}
+            cameraPreset={cameraPreset}
           />
 
           {/* Quick Simulation Trigger Overlay Dock (Bottom Left) */}

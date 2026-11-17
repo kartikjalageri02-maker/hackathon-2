@@ -19,8 +19,8 @@ export default function AlertTimelineModal({ alert, onClose }) {
   if (!alert) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-      <div className="w-full max-w-lg rounded-xl border border-[#272727] bg-[#181818] shadow-2xl p-6 space-y-4 max-h-[85vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-fade-in">
+      <div className="w-full max-w-lg rounded-2xl border border-[#313131] bg-[#181818] shadow-2xl p-6 space-y-4 max-h-[85vh] flex flex-col animate-scale-up">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-[#272727] pb-3">
           <div>

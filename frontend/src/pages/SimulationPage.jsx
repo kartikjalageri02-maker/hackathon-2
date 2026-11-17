@@ -263,10 +263,10 @@ export default function SimulationPage() {
                         setTargetMachine(sc.machines[0])
                       }
                     }}
-                    className={`p-4 rounded-xl border cursor-pointer transition-all duration-300 flex flex-col justify-between ${
+                    className={`p-4 rounded-xl border cursor-pointer transition-all duration-200 card-hover-smooth flex flex-col justify-between ${
                       isSelected
-                        ? "bg-[#1F1F1F] border-white shadow-lg"
-                        : "bg-[#131209] border-[#313131] hover:border-[#444444]"
+                        ? "bg-[#1F1F1F] border-white shadow-xl shadow-white/5"
+                        : "bg-[#131209] border-[#313131] hover:border-[#4B5563]"
                     }`}
                   >
                     <div>
