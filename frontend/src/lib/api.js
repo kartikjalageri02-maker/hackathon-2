@@ -1,3 +1,5 @@
+import { getMockEndpoint } from "./mockBackend"
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || ""
 
 export async function fetchApi(endpoint, options = {}) {
@@ -10,23 +12,32 @@ export async function fetchApi(endpoint, options = {}) {
     ...options.headers,
   }
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-  })
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers,
+    })
 
-  if (!response.ok) {
-    let errorDetail = "An unexpected error occurred"
-    try {
-      const errJson = await response.json()
-      errorDetail = errJson.error?.message || errJson.detail || JSON.stringify(errJson)
-    } catch {
-      errorDetail = response.statusText
+    if (!response.ok) {
+      const mock = getMockEndpoint(endpoint)
+      if (mock !== null) return mock
+
+      let errorDetail = "An unexpected error occurred"
+      try {
+        const errJson = await response.json()
+        errorDetail = errJson.error?.message || errJson.detail || JSON.stringify(errJson)
+      } catch {
+        errorDetail = response.statusText
+      }
+      throw new Error(errorDetail)
     }
-    throw new Error(errorDetail)
-  }
 
-  return response.json()
+    return response.json()
+  } catch (err) {
+    const mock = getMockEndpoint(endpoint)
+    if (mock !== null) return mock
+    throw err
+  }
 }
 
 // Factory

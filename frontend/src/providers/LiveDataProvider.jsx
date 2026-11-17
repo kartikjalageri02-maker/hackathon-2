@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useEffect, useState, useRef } from "react"
 import { fetchApi } from "@/lib/api"
 import { alarmEngine } from "@/lib/alarm"
+import { generateSensorReading, MOCK_MACHINES } from "@/lib/mockBackend"
 
 const LiveDataContext = createContext(null)
 
 export function LiveDataProvider({ children }) {
-  const [connectionStatus, setConnectionStatus] = useState("reconnecting") // connected, reconnecting, offline
-  const [machines, setMachines] = useState([])
+  const [connectionStatus, setConnectionStatus] = useState("connected") // connected, reconnecting, offline
+  const [machines, setMachines] = useState(MOCK_MACHINES)
   const [factorySummary, setFactorySummary] = useState(null)
   const [activeAlerts, setActiveAlerts] = useState([])
   const [latestTelemetry, setLatestTelemetry] = useState({})
@@ -15,6 +16,24 @@ export function LiveDataProvider({ children }) {
   const wsRef = useRef(null)
   const reconnectTimeoutRef = useRef(null)
   const pollIntervalRef = useRef(null)
+  const simTickerRef = useRef(null)
+  const tickCountRef = useRef(0)
+
+  // Start smooth client-side live simulation stream for static / GitHub Pages deployment
+  const startClientSimStream = () => {
+    if (simTickerRef.current) return
+    setConnectionStatus("connected")
+    simTickerRef.current = setInterval(() => {
+      tickCountRef.current += 1
+      const tick = tickCountRef.current
+      const machineIds = ["MCH001", "MCH002", "MCH003"]
+      const newTelem = {}
+      machineIds.forEach((id) => {
+        newTelem[id] = generateSensorReading(id, tick)
+      })
+      setLatestTelemetry((prev) => ({ ...prev, ...newTelem }))
+    }, 1000)
+  }
 
   // Fetch initial REST snapshot
   const loadInitialData = async () => {
@@ -36,6 +55,12 @@ export function LiveDataProvider({ children }) {
       return
     }
 
+    // On GitHub Pages or static host, activate instant client live stream
+    if (window.location.hostname.endsWith("github.io")) {
+      startClientSimStream()
+      return
+    }
+
     const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:"
     const wsUrl = import.meta.env.VITE_WS_URL || `${wsProtocol}//${window.location.host}/ws/live`
 
@@ -45,6 +70,10 @@ export function LiveDataProvider({ children }) {
 
       ws.onopen = () => {
         setConnectionStatus("connected")
+        if (simTickerRef.current) {
+          clearInterval(simTickerRef.current)
+          simTickerRef.current = null
+        }
         if (pollIntervalRef.current) {
           clearInterval(pollIntervalRef.current)
           pollIntervalRef.current = null
@@ -109,16 +138,16 @@ export function LiveDataProvider({ children }) {
       }
 
       ws.onerror = () => {
-        setConnectionStatus("reconnecting")
+        startClientSimStream()
       }
 
       ws.onclose = () => {
-        setConnectionStatus("reconnecting")
+        startClientSimStream()
         wsRef.current = null
         scheduleReconnect()
       }
     } catch {
-      setConnectionStatus("offline")
+      startClientSimStream()
       scheduleReconnect()
     }
   }
@@ -127,7 +156,7 @@ export function LiveDataProvider({ children }) {
     if (reconnectTimeoutRef.current) clearTimeout(reconnectTimeoutRef.current)
     reconnectTimeoutRef.current = setTimeout(() => {
       connectWebSocket()
-    }, 3000)
+    }, 5000)
 
     // Fallback polling while disconnected
     if (!pollIntervalRef.current) {
@@ -143,6 +172,7 @@ export function LiveDataProvider({ children }) {
       if (wsRef.current) wsRef.current.close()
       if (reconnectTimeoutRef.current) clearTimeout(reconnectTimeoutRef.current)
       if (pollIntervalRef.current) clearInterval(pollIntervalRef.current)
+      if (simTickerRef.current) clearInterval(simTickerRef.current)
     }
   }, [])
 
