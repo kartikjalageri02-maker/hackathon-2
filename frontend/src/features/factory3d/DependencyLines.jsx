@@ -19,17 +19,19 @@ export function DependencyLines({ machines = [] }) {
   useFrame((state) => {
     if (pulseGroupRef.current) {
       const t = state.clock.getElapsedTime()
-      // Move pulse indicator along the line
       pulseGroupRef.current.children.forEach((mesh, index) => {
-        const offset = (t * 0.4 + index * 0.5) % 1.0
-        const conn = connections[index % connections.length]
+        const offset = (t * 0.45 + index * 0.25) % 1.0
+        const connIndex = Math.floor(index / 2) % connections.length
+        const conn = connections[connIndex]
         const p1 = machineMap[conn.from]
         const p2 = machineMap[conn.to]
 
         if (p1 && p2) {
           mesh.position.x = p1.x + (p2.x - p1.x) * offset
-          mesh.position.y = 0.05
+          mesh.position.y = 0.06
           mesh.position.z = p1.z + (p2.z - p1.z) * offset
+          const pulseScale = 0.8 + 0.3 * Math.sin(offset * Math.PI)
+          mesh.scale.set(pulseScale, pulseScale, pulseScale)
         }
       })
     }
@@ -50,33 +52,42 @@ export function DependencyLines({ machines = [] }) {
 
         return (
           <group key={`${conn.from}-${conn.to}`}>
-            {/* Base connection line */}
+            {/* Base pathway line */}
             <line geometry={lineGeometry}>
-              <lineBasicMaterial color="#313131" linewidth={2} />
+              <lineBasicMaterial color="#334155" linewidth={2} />
             </line>
 
-            {/* Chevron directional arrows at midpoint */}
-            <mesh
-              position={[(p1.x + p2.x) / 2, 0.04, (p1.z + p2.z) / 2]}
-              rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-            >
-              <coneGeometry args={[0.15, 0.35, 12]} />
-              <meshBasicMaterial color="#9B9B9B" opacity={0.7} transparent />
-            </mesh>
+            {/* Directional transfer chevrons at 35% and 65% points */}
+            {[0.35, 0.65].map((ratio, idx) => (
+              <mesh
+                key={`chevron-${idx}`}
+                position={[
+                  p1.x + (p2.x - p1.x) * ratio,
+                  0.05,
+                  p1.z + (p2.z - p1.z) * ratio,
+                ]}
+                rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+              >
+                <coneGeometry args={[0.16, 0.38, 16]} />
+                <meshBasicMaterial color="#64748B" opacity={0.85} transparent />
+              </mesh>
+            ))}
           </group>
         )
       })}
 
-      {/* Animated flow pulse markers */}
+      {/* Animated Glowing Material Transfer Pulses */}
       <group ref={pulseGroupRef}>
-        <mesh>
-          <sphereGeometry args={[0.08, 12, 12]} />
-          <meshBasicMaterial color="#FFFFFF" opacity={0.9} transparent />
-        </mesh>
-        <mesh>
-          <sphereGeometry args={[0.08, 12, 12]} />
-          <meshBasicMaterial color="#FFFFFF" opacity={0.9} transparent />
-        </mesh>
+        {[0, 1, 2, 3].map((idx) => (
+          <mesh key={`pulse-dot-${idx}`}>
+            <sphereGeometry args={[0.09, 14, 14]} />
+            <meshStandardMaterial
+              color="#38BDF8"
+              emissive="#38BDF8"
+              emissiveIntensity={2.0}
+            />
+          </mesh>
+        ))}
       </group>
     </group>
   )

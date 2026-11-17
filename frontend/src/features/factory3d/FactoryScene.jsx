@@ -7,7 +7,6 @@ import { useSelectedMachine } from "@/providers/SelectedMachineProvider"
 import { ProceduralMachine } from "./ProceduralMachine"
 import { DependencyLines } from "./DependencyLines"
 import { CameraControls } from "./CameraControls"
-import { SkeletonBox } from "@/components/shared/Skeletons"
 
 export function FactoryScene({ resetTrigger = 0, isFocusingSelected = false }) {
   const [layout, setLayout] = useState([])
@@ -47,41 +46,59 @@ export function FactoryScene({ resetTrigger = 0, isFocusingSelected = false }) {
   const focusPos = isFocusingSelected && selectedMachine ? selectedMachine.position : null
 
   return (
-    <div className="w-full h-full relative bg-[#131209]">
+    <div className="w-full h-full relative bg-[#0D0F14] select-none">
       <Canvas
-        camera={{ position: [0, 8, 14], fov: 45 }}
+        camera={{ position: [0, 7.5, 13.5], fov: 44 }}
         dpr={[1, 2]} // Clamped DPR per specification
-        gl={{ antialias: true, alpha: false }}
+        gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
         className="w-full h-full"
       >
-        {/* Flat scene background */}
-        <color attach="background" args={["#131209"]} />
+        {/* Deep Industrial Digital Twin Studio Canvas */}
+        <color attach="background" args={["#0D0F14"]} />
 
-        {/* Studio Lighting (No external HDR/CDN) */}
-        <ambientLight intensity={0.7} />
+        {/* High Definition Multi-Point Studio Lighting */}
+        <ambientLight intensity={1.2} />
+        {/* Main Sun/Key Light */}
         <directionalLight
-          position={[10, 15, 10]}
-          intensity={1.2}
+          position={[12, 18, 10]}
+          intensity={2.6}
           castShadow={false}
         />
-        <directionalLight position={[-10, 10, -5]} intensity={0.4} />
+        {/* Cool Industrial Blue Fill Light */}
+        <directionalLight
+          position={[-12, 14, -6]}
+          intensity={1.5}
+          color="#93C5FD"
+        />
+        {/* White Silhouette Edge/Rim Backlight */}
+        <directionalLight
+          position={[0, 16, -14]}
+          intensity={2.2}
+          color="#FFFFFF"
+        />
+        {/* Soft Floor Upward Bounce */}
+        <directionalLight
+          position={[0, -4, 8]}
+          intensity={0.6}
+          color="#E2E8F0"
+        />
 
-        {/* Floor Grid with design token colors */}
+        {/* Studio Floor Grid */}
         <Grid
           position={[0, 0, 0]}
-          args={[40, 40]}
+          args={[45, 45]}
           cellSize={1}
-          cellThickness={0.8}
-          cellColor="#1F1F1F"
+          cellThickness={0.9}
+          cellColor="#1E293B"
           sectionSize={5}
-          sectionThickness={1.2}
-          sectionColor="#272727"
-          fadeDistance={30}
+          sectionThickness={1.4}
+          sectionColor="#334155"
+          fadeDistance={36}
           fadeStrength={1.5}
         />
 
         <Suspense fallback={null}>
-          {/* Machines */}
+          {/* 3 Procedural Machine Stations */}
           {mergedMachines.map((m) => (
             <ProceduralMachine
               key={m.id}
@@ -89,18 +106,17 @@ export function FactoryScene({ resetTrigger = 0, isFocusingSelected = false }) {
               isSelected={m.id === selectedMachineId}
               onSelect={selectMachine}
               isImpactedDownstream={
-                // MCH002 or MCH003 highlighted if MCH001 has fault
                 (m.id === "MCH002" || m.id === "MCH003") &&
                 liveMachines.some((lm) => lm.id === "MCH001" && lm.severity !== "Normal")
               }
             />
           ))}
 
-          {/* Dependency Routing Lines */}
+          {/* Animated Line Material Flow & Dependency Links */}
           <DependencyLines machines={mergedMachines} />
         </Suspense>
 
-        {/* Interactive Camera Controls */}
+        {/* Ultra-Smooth Damped Camera Controls */}
         <CameraControls
           focusPosition={focusPos}
           resetTrigger={resetTrigger}
