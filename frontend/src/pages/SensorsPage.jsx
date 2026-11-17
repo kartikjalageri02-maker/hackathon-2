@@ -96,7 +96,7 @@ export function SensorsPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-sensors-waveform min-h-full">
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>

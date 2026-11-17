@@ -183,7 +183,7 @@ export default function SimulationPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-simulation-grid min-h-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#313131] pb-6">
         <div>

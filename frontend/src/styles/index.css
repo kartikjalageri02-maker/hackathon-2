@@ -385,3 +385,136 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
+/* ==========================================================================
+   Glossy Glassmorphism Effects (Liquid Glass Aesthetic)
+   ========================================================================== */
+
+.glossy-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(28, 28, 32, 0.72) 0%, rgba(14, 14, 18, 0.84) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.45),
+    0 20px 40px -15px rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glossy-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
+    0 24px 50px -12px rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+}
+
+.glossy-panel {
+  background: linear-gradient(145deg, rgba(22, 22, 26, 0.8) 0%, rgba(10, 10, 14, 0.94) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
+    0 25px 50px -12px rgba(0, 0, 0, 0.85);
+}
+
+.glossy-btn {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glossy-btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.glossy-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Section Thematic Industrial Background Patterns (SVG Data URIs)
+   ========================================================================== */
+
+/* Main Overview: High-tech Industrial Factory Blueprint & Engineering Grid */
+.bg-blueprint-overview {
+  background-image: 
+    radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.06), transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.04), transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Sensors: Technical Oscilloscope Waveform & Signal Grid */
+.bg-sensors-waveform {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.06), transparent 45%),
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+/* Intelligence: Algorithmic Matrix Lattice & Decision Tree Pattern */
+.bg-intelligence-matrix {
+  background-image:
+    radial-gradient(circle at 75% 20%, rgba(139, 92, 246, 0.06), transparent 50%),
+    linear-gradient(rgba(139, 92, 246, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* Dependencies: Topological Flow Network & Node Graph */
+.bg-dependencies-network {
+  background-image:
+    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05), transparent 45%),
+    linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Maintenance: Mechanical CAD Technical Blueprint */
+.bg-maintenance-cad {
+  background-image:
+    radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.06), transparent 45%),
+    linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 44px 44px, 44px 44px;
+}
+
+/* Resources: Warehouse Logistics & Inventory Coordinate Matrix */
+.bg-resources-matrix {
+  background-image:
+    radial-gradient(circle at 25% 65%, rgba(59, 130, 246, 0.05), transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Alerts: Incident Management & Safety Perimeter Lattice */
+.bg-alerts-lattice {
+  background-image:
+    radial-gradient(circle at 50% 15%, rgba(239, 68, 68, 0.06), transparent 50%),
+    linear-gradient(rgba(239, 68, 68, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 68, 68, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* Simulation: Vector-Field Sandbox Grid */
+.bg-simulation-grid {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.06), transparent 60%),
+    linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}

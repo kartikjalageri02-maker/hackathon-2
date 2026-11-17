@@ -32,12 +32,12 @@ export default function DependenciesPage() {
   }, [])
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-dependencies-network min-h-full">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#272727] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-[#272727]">
+            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-white/10">
               MODULE 5
             </span>
             <span className="c1 text-text-secondary font-mono">NetworkX Topology DiGraph</span>
@@ -50,7 +50,7 @@ export default function DependenciesPage() {
 
         <button
           onClick={fetchData}
-          className="self-start md:self-auto p-2 rounded bg-[#1F1F1F] border border-[#272727] text-text-secondary hover:text-[#FFFFFF] hover:border-[#313131] transition-all"
+          className="self-start md:self-auto p-2 rounded-lg glossy-btn text-white transition-all"
           title="Refresh dependencies"
         >
           <ArrowsClockwise size={16} className={isLoading ? 'animate-spin' : ''} />

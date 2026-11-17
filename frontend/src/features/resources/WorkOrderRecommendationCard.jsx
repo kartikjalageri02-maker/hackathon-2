@@ -22,9 +22,9 @@ export default function WorkOrderRecommendationCard({ recommendation, onApprove,
     : 'border-status-yellow bg-status-yellow/15 text-status-yellow'
 
   return (
-    <div className="rounded-xl border border-[#272727] bg-[#181818] p-5 space-y-4 hover:border-[#313131] transition-all">
+    <div className="rounded-xl border border-white/10 glossy-card p-5 space-y-4 hover:border-white/20 transition-all">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#272727] pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
         <div className="flex items-center gap-2 flex-wrap">
           <span className={`px-2.5 py-0.5 rounded font-mono text-xs font-semibold border ${priorityColor}`}>
             {recommendation.priority} Priority

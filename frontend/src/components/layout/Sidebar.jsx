@@ -28,10 +28,10 @@ export const NAV_ITEMS = [
 
 export function Sidebar({ currentStage = 11 }) {
   return (
-    <aside className="hidden lg:flex flex-col justify-between w-64 bg-[#131209] border-r border-[#313131] shrink-0 h-full">
+    <aside className="hidden lg:flex flex-col justify-between w-64 bg-[#0D0F14]/95 backdrop-blur-2xl border-r border-white/10 shrink-0 h-full">
       <div>
         {/* Brand Header */}
-        <div className="h-14 border-b border-[#313131] px-5 flex items-center gap-2.5">
+        <div className="h-14 border-b border-white/10 px-5 flex items-center gap-2.5">
           <Factory className="size-6 text-white shrink-0" weight="fill" />
           <span className="title-3 font-semibold text-white tracking-tight truncate">
             Beyond Factory Floor
@@ -66,8 +66,8 @@ export function Sidebar({ currentStage = 11 }) {
                   cn(
                     "flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 active:scale-[0.98]",
                     isActive
-                      ? "bg-[#272727] text-white font-medium border-l-2 border-white shadow-sm"
-                      : "text-[#9B9B9B] hover:text-white hover:bg-[#181818]"
+                      ? "bg-white/10 text-white font-medium border-l-2 border-white shadow-inner backdrop-blur-md"
+                      : "text-[#9B9B9B] hover:text-white hover:bg-white/5"
                   )
                 }
               >

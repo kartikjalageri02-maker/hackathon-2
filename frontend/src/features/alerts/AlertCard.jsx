@@ -31,14 +31,14 @@ export default function AlertCard({ alert, onAcknowledge, onResolve, onOpenTimel
     : 'border-status-yellow/60 bg-status-yellow/5 text-status-yellow'
 
   return (
-    <div className={`rounded-xl border p-5 transition-all duration-300 ${
+    <div className={`rounded-xl border p-5 transition-all duration-300 glossy-card ${
       alert.status === 'active'
         ? isEmergency
-          ? 'border-status-red bg-[#181818] shadow-lg shadow-status-red/10'
-          : 'border-[#272727] bg-[#181818] hover:border-[#313131]'
+          ? 'border-status-red shadow-lg shadow-status-red/20'
+          : 'border-white/15 hover:border-white/30'
         : alert.status === 'acknowledged'
-        ? 'border-status-yellow/30 bg-[#181818]'
-        : 'border-[#272727] bg-[#181818]/60 opacity-80'
+        ? 'border-status-yellow/30'
+        : 'border-white/5 opacity-80'
     }`}>
       {/* Top Header Row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">

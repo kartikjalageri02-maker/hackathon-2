@@ -72,12 +72,12 @@ export default function ResourcesPage() {
   const availableTechsCount = technicians.filter(t => t.availability === 'Available').length
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-resources-matrix min-h-full">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#272727] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-[#272727]">
+            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-white/10">
               MODULE 7
             </span>
             <span className="c1 text-text-secondary font-mono">Prescriptive Resource Dispatch</span>
@@ -90,7 +90,7 @@ export default function ResourcesPage() {
 
         <button
           onClick={fetchData}
-          className="self-start md:self-auto p-2 rounded bg-[#1F1F1F] border border-[#272727] text-text-secondary hover:text-[#FFFFFF] hover:border-[#313131] transition-all"
+          className="self-start md:self-auto p-2 rounded-lg glossy-btn text-white transition-all"
           title="Refresh resources"
         >
           <ArrowsClockwise size={16} className={isLoading ? 'animate-spin' : ''} />
@@ -130,12 +130,12 @@ export default function ResourcesPage() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#272727] pb-2">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-2">
         <button
           onClick={() => setActiveTab('recommendations')}
-          className={`py-1.5 px-3 rounded text-sm font-medium transition-colors ${
+          className={`py-1.5 px-3 rounded-lg text-sm font-medium transition-all ${
             activeTab === 'recommendations'
-              ? 'bg-[#272727] text-[#FFFFFF]'
+              ? 'bg-white/15 text-[#FFFFFF] shadow-sm'
               : 'text-text-secondary hover:text-[#FFFFFF]'
           }`}
         >
@@ -143,9 +143,9 @@ export default function ResourcesPage() {
         </button>
         <button
           onClick={() => setActiveTab('parts')}
-          className={`py-1.5 px-3 rounded text-sm font-medium transition-colors ${
+          className={`py-1.5 px-3 rounded-lg text-sm font-medium transition-all ${
             activeTab === 'parts'
-              ? 'bg-[#272727] text-[#FFFFFF]'
+              ? 'bg-white/15 text-[#FFFFFF] shadow-sm'
               : 'text-text-secondary hover:text-[#FFFFFF]'
           }`}
         >
@@ -153,9 +153,9 @@ export default function ResourcesPage() {
         </button>
         <button
           onClick={() => setActiveTab('technicians')}
-          className={`py-1.5 px-3 rounded text-sm font-medium transition-colors ${
+          className={`py-1.5 px-3 rounded-lg text-sm font-medium transition-all ${
             activeTab === 'technicians'
-              ? 'bg-[#272727] text-[#FFFFFF]'
+              ? 'bg-white/15 text-[#FFFFFF] shadow-sm'
               : 'text-text-secondary hover:text-[#FFFFFF]'
           }`}
         >

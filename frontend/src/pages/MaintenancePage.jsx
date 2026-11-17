@@ -63,12 +63,12 @@ export default function MaintenancePage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-maintenance-cad min-h-full">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#272727] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-[#272727]">
+            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#1F1F1F] text-text-secondary border border-white/10">
               MODULE 4
             </span>
             <span className="c1 text-text-secondary font-mono">{selectedMachineId}</span>
@@ -82,14 +82,14 @@ export default function MaintenancePage() {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchData}
-            className="p-2 rounded bg-[#1F1F1F] border border-[#272727] text-text-secondary hover:text-[#FFFFFF] hover:border-[#313131] transition-all"
+            className="p-2 rounded-lg glossy-btn text-white transition-all"
             title="Refresh telemetry"
           >
             <ArrowsClockwise size={16} className={isLoading ? 'animate-spin' : ''} />
           </button>
           <button
             onClick={handleCreateTask}
-            className="inline-flex items-center gap-2 py-2 px-3 rounded bg-[#FFFFFF] text-[#000000] b3 font-medium hover:bg-neutral-200 transition-all active:scale-[0.98]"
+            className="inline-flex items-center gap-2 py-2 px-3.5 rounded-lg bg-white text-black b3 font-semibold hover:bg-neutral-200 transition-all active:scale-[0.98] shadow-md"
           >
             <Plus size={16} weight="bold" />
             <span>Create Work Order</span>
@@ -129,12 +129,12 @@ export default function MaintenancePage() {
       </div>
 
       {/* Tabs / Section Switcher */}
-      <div className="flex items-center gap-2 border-b border-[#272727] pb-2">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-2">
         <button
           onClick={() => setActiveTab('components')}
-          className={`py-1.5 px-3 rounded text-sm font-medium transition-colors ${
+          className={`py-1.5 px-3 rounded-lg text-sm font-medium transition-all ${
             activeTab === 'components'
-              ? 'bg-[#272727] text-[#FFFFFF]'
+              ? 'bg-white/15 text-[#FFFFFF] shadow-sm'
               : 'text-text-secondary hover:text-[#FFFFFF]'
           }`}
         >
@@ -142,9 +142,9 @@ export default function MaintenancePage() {
         </button>
         <button
           onClick={() => setActiveTab('history')}
-          className={`py-1.5 px-3 rounded text-sm font-medium transition-colors ${
+          className={`py-1.5 px-3 rounded-lg text-sm font-medium transition-all ${
             activeTab === 'history'
-              ? 'bg-[#272727] text-[#FFFFFF]'
+              ? 'bg-white/15 text-[#FFFFFF] shadow-sm'
               : 'text-text-secondary hover:text-[#FFFFFF]'
           }`}
         >

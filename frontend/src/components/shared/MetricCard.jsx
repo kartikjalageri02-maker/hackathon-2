@@ -5,7 +5,7 @@ export function MetricCard({ title, value, unit, change, status, icon, subtitle,
   return (
     <div
       className={cn(
-        "bg-[#181818] border border-[#313131] rounded-xl p-4 flex flex-col justify-between card-hover-smooth shadow-md",
+        "glossy-card p-4 flex flex-col justify-between shadow-lg",
         className
       )}
     >

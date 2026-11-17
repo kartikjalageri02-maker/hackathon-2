@@ -37,13 +37,13 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
   }
 
   return (
-    <header className="sticky top-0 z-40 h-14 bg-[#131209] border-b border-[#313131] px-4 flex items-center justify-between">
+    <header className="sticky top-0 z-40 h-14 bg-[#0D0F14]/90 backdrop-blur-xl border-b border-white/10 px-4 flex items-center justify-between">
       {/* Left side: Mobile Toggle & Machine Selector */}
       <div className="flex items-center gap-3">
         <button
           onClick={onToggleMobileMenu}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-          className="lg:hidden p-1.5 rounded-md hover:bg-[#272727] active:scale-[0.98] transition-colors duration-300"
+          className="lg:hidden p-1.5 rounded-md hover:bg-white/10 active:scale-[0.98] transition-colors duration-300"
         >
           {mobileMenuOpen ? <X className="size-5" /> : <List className="size-5" />}
         </button>
@@ -52,7 +52,7 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
         <div className="relative">
           <button
             onClick={() => setMachineDropdownOpen(!machineDropdownOpen)}
-            className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] transition-colors duration-300 active:scale-[0.98]"
+            className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg glossy-panel hover:bg-white/10 border border-white/10 transition-colors duration-300 active:scale-[0.98]"
           >
             <Cpu className="size-4 text-[#9B9B9B]" />
             <span className="title-4 font-mono font-medium text-white">{selectedMachine.id}</span>
@@ -68,7 +68,7 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setMachineDropdownOpen(false)}
               />
-              <div className="absolute left-0 mt-1.5 w-64 bg-[#181818]/95 border border-[#313131] rounded-xl shadow-2xl z-50 py-1 backdrop-blur-md animate-dropdown-fade">
+              <div className="absolute left-0 mt-1.5 w-64 glossy-panel rounded-xl shadow-2xl z-50 py-1 backdrop-blur-2xl animate-dropdown-fade border border-white/10">
                 <div className="px-3 py-1.5 caption-4 text-[#9B9B9B] border-b border-[#313131]">
                   Select machine in line
                 </div>
@@ -142,10 +142,10 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
           onClick={toggleAlarm}
           title={alarmEnabled ? "Emergency audio alarm enabled" : "Emergency audio alarm muted"}
           className={cn(
-            "p-2 rounded-lg border transition-colors duration-300 active:scale-[0.98]",
+            "p-2 rounded-lg border transition-all duration-300 active:scale-[0.98]",
             alarmEnabled
-              ? "bg-[#1F1F1F] border-red-500/40 text-red-400"
-              : "bg-[#181818] border-[#313131] text-[#9B9B9B] hover:text-white"
+              ? "glossy-panel border-red-500/40 text-red-400 shadow-sm shadow-red-500/20"
+              : "glossy-btn text-[#9B9B9B] hover:text-white"
           )}
         >
           {alarmEnabled ? <SpeakerHigh className="size-4" /> : <SpeakerSlash className="size-4" />}
@@ -155,7 +155,7 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
         <div className="relative">
           <button
             onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#1F1F1F] hover:bg-[#272727] border border-[#313131] transition-colors duration-300 active:scale-[0.98]"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg glossy-panel hover:bg-white/10 border border-white/10 transition-all duration-300 active:scale-[0.98]"
           >
             <span className="caption-4 text-[#9B9B9B] hidden sm:inline">Role:</span>
             <span className="body-5 text-white">{role}</span>
@@ -168,8 +168,8 @@ export function TopBar({ onToggleMobileMenu, mobileMenuOpen }) {
                 className="fixed inset-0 z-40"
                 onClick={() => setRoleDropdownOpen(false)}
               />
-              <div className="absolute right-0 mt-1.5 w-44 bg-[#181818]/95 border border-[#313131] rounded-xl shadow-2xl z-50 py-1 backdrop-blur-md animate-dropdown-fade">
-                <div className="px-3 py-1.5 caption-4 text-[#9B9B9B] border-b border-[#313131]">
+              <div className="absolute right-0 mt-1.5 w-44 glossy-panel rounded-xl shadow-2xl z-50 py-1 backdrop-blur-2xl animate-dropdown-fade border border-white/10">
+                <div className="px-3 py-1.5 caption-4 text-[#9B9B9B] border-b border-white/10">
                   Switch demo role
                 </div>
                 {["Viewer", "Operator", "Supervisor"].map((r) => (

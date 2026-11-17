@@ -9,6 +9,7 @@ import {
   Cube,
   Info,
   Compass,
+  X,
 } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 
@@ -59,9 +60,9 @@ export function Factory3DPage() {
               <span className="caption-5 font-mono text-white/50">{activeTouchedPart.machineId} • COMPONENT</span>
               <button
                 onClick={() => setActiveTouchedPart(null)}
-                className="text-[#9B9B9B] hover:text-white transition-colors"
+                className="text-[#9B9B9B] hover:text-white transition-colors p-0.5"
               >
-                ✕
+                <X className="size-3.5" />
               </button>
             </div>
             <h4 className="title-4 text-white font-semibold truncate mt-0.5">{activeTouchedPart.name}</h4>
@@ -73,13 +74,13 @@ export function Factory3DPage() {
 
       {/* Floating Viewport Toolbar (Top Left) */}
       <div className="absolute left-4 top-4 z-20 flex flex-wrap items-center gap-2">
-        <div className="px-3 py-1.5 rounded-lg bg-[#181818]/90 backdrop-blur-md border border-[#313131] flex items-center gap-2 text-white">
+        <div className="px-3 py-1.5 rounded-lg glossy-panel flex items-center gap-2 text-white">
           <Cube className="size-4 text-[#9B9B9B]" />
           <span className="caption-3 font-semibold">Line 01 Twin</span>
         </div>
 
         {/* View Presets Pill Group */}
-        <div className="flex items-center rounded-lg bg-[#181818]/90 backdrop-blur-md border border-[#313131] p-0.5">
+        <div className="flex items-center rounded-lg glossy-panel p-0.5">
           {[
             { id: "overview", label: "Overview" },
             { id: "isometric", label: "Isometric" },
@@ -92,7 +93,7 @@ export function Factory3DPage() {
               className={cn(
                 "px-2.5 py-1 rounded-md caption-4 transition-all duration-200 active:scale-[0.98]",
                 cameraPreset === view.id && !focusSelected
-                  ? "bg-[#272727] text-white font-medium"
+                  ? "bg-white/20 text-white font-medium shadow-sm"
                   : "text-[#9B9B9B] hover:text-white"
               )}
             >
@@ -104,10 +105,10 @@ export function Factory3DPage() {
         <button
           onClick={handleFocusSelected}
           className={cn(
-            "flex items-center gap-1.5 px-3 py-1.5 rounded-lg backdrop-blur-md border border-[#313131] caption-3 transition-all duration-300 active:scale-[0.98]",
+            "flex items-center gap-1.5 px-3 py-1.5 rounded-lg caption-3 transition-all duration-300 active:scale-[0.98]",
             focusSelected
-              ? "bg-white text-black font-semibold"
-              : "bg-[#181818]/90 hover:bg-[#272727] text-white"
+              ? "bg-white text-black font-semibold shadow-lg"
+              : "glossy-btn text-white"
           )}
           title="Focus camera on selected machine"
         >
@@ -117,7 +118,7 @@ export function Factory3DPage() {
 
         <button
           onClick={handleResetCamera}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#181818]/90 hover:bg-[#272727] active:scale-[0.98] backdrop-blur-md border border-[#313131] text-white caption-3 transition-colors duration-300"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg glossy-btn active:scale-[0.98] text-white caption-3 transition-colors duration-300"
           title="Reset camera perspective"
         >
           <ArrowsCounterClockwise className="size-3.5 text-[#9B9B9B]" />

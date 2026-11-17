@@ -50,10 +50,10 @@ export default function BottleneckSummary({ impact }) {
       </div>
 
       {/* Action Recommendation Banner */}
-      <div className={`p-4 rounded-xl border flex items-start gap-3 ${
+      <div className={`p-4 rounded-xl border flex items-start gap-3 backdrop-blur-md transition-all ${
         isDegraded
-          ? 'bg-status-red/10 border-status-red/30 text-[#FFFFFF]'
-          : 'bg-[#181818] border-[#272727] text-text-secondary'
+          ? 'bg-status-red/10 border-status-red/30 text-[#FFFFFF] shadow-lg'
+          : 'glossy-panel text-text-secondary'
       }`}>
         {isDegraded ? (
           <Warning size={22} className="text-status-red shrink-0 mt-0.5" weight="bold" />
@@ -73,7 +73,7 @@ export default function BottleneckSummary({ impact }) {
       {/* Propagation Chain & Engineering Assumptions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Propagation Chain */}
-        <div className="rounded-xl border border-[#272727] bg-[#181818] p-5 space-y-3">
+        <div className="glossy-panel rounded-xl p-5 space-y-3">
           <div className="flex items-center gap-2">
             <ListNumbers size={18} className="text-[#9B9B9B]" />
             <h3 className="h3 text-[#FFFFFF]">Loss Propagation Chain</h3>
@@ -84,7 +84,7 @@ export default function BottleneckSummary({ impact }) {
               {impact.propagation_chain.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-2.5 p-3 rounded-lg bg-[#131209] border border-[#272727] text-xs"
+                  className="flex items-start gap-2.5 p-3 rounded-lg bg-[#141418] border border-white/10 text-xs"
                 >
                   <span className="font-mono text-status-orange font-bold shrink-0">
                     Step {idx + 1}:
@@ -96,14 +96,14 @@ export default function BottleneckSummary({ impact }) {
               ))}
             </div>
           ) : (
-            <div className="p-4 rounded-lg bg-[#131209] text-center text-text-secondary text-xs">
+            <div className="p-4 rounded-lg bg-[#141418] border border-white/5 text-center text-text-secondary text-xs">
               No starvation or throughput constraints active along the production line.
             </div>
           )}
         </div>
 
         {/* Engineering Assumptions */}
-        <div className="rounded-xl border border-[#272727] bg-[#181818] p-5 space-y-3">
+        <div className="glossy-panel rounded-xl p-5 space-y-3">
           <div className="flex items-center gap-2">
             <ArrowsClockwise size={18} className="text-[#9B9B9B]" />
             <h3 className="h3 text-[#FFFFFF]">Modeling Assumptions</h3>
@@ -113,7 +113,7 @@ export default function BottleneckSummary({ impact }) {
             {impact.assumptions && impact.assumptions.map((assump, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-2 p-2.5 rounded-lg bg-[#131209] border border-[#272727] text-xs text-text-secondary"
+                className="flex items-start gap-2 p-2.5 rounded-lg bg-[#141418] border border-white/10 text-xs text-text-secondary"
               >
                 <span className="text-[#FFFFFF] font-mono">•</span>
                 <span>{assump}</span>

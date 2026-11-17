@@ -20,7 +20,8 @@ import {
   Crosshair,
   Lightning,
   ShieldWarning,
-  Wrench
+  Wrench,
+  X
 } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import { startSimulationScenario, resetSimulation } from "@/lib/api"
@@ -69,12 +70,12 @@ export function OverviewPage() {
   }
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto p-2 sm:p-4 rounded-3xl bg-blueprint-overview min-h-full">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#313131] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="caption-3 font-mono text-white bg-[#1F1F1F] px-2 py-0.5 rounded border border-[#313131]">
+            <span className="caption-3 font-mono text-white bg-[#1F1F1F] px-2 py-0.5 rounded border border-white/10">
               LINE 01
             </span>
             <span className="caption-3 text-[#9B9B9B] font-mono">3 Connected Stations • Synchronous Flow</span>
@@ -89,7 +90,7 @@ export function OverviewPage() {
           <button
             onClick={handleResetLine}
             disabled={isSimulating}
-            className="flex items-center gap-2 py-2 px-3 rounded-lg bg-[#181818] hover:bg-[#272727] border border-[#313131] text-white button-sm transition-colors duration-300 active:scale-[0.98]"
+            className="flex items-center gap-2 py-2 px-3 rounded-lg glossy-btn text-white button-sm transition-all duration-300"
             title="Reset line to nominal"
           >
             <ArrowsCounterClockwise className="size-4 text-[#9B9B9B]" />
@@ -97,7 +98,7 @@ export function OverviewPage() {
           </button>
           <button
             onClick={() => navigate("/app/simulation")}
-            className="flex items-center gap-2 py-2 px-3 rounded-lg bg-white hover:bg-neutral-200 text-black button-sm font-semibold transition-colors duration-300 active:scale-[0.98]"
+            className="flex items-center gap-2 py-2 px-3 rounded-lg bg-white hover:bg-neutral-200 text-black button-sm font-semibold transition-all duration-300 active:scale-[0.98] shadow-lg shadow-white/10"
           >
             <PlayCircle className="size-4" weight="fill" />
             <span>What If Sandbox</span>
@@ -115,7 +116,7 @@ export function OverviewPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#181818] border border-[#313131] rounded-xl p-4 flex items-center justify-between">
+          <div className="glossy-card p-4 flex items-center justify-between">
             <div>
               <span className="title-4 text-[#9B9B9B]">Factory Health</span>
               <div className="heading-3 font-mono text-white mt-1">
@@ -167,9 +168,9 @@ export function OverviewPage() {
       )}
 
       {/* Hero 3D Digital Twin Viewport with Quick Simulation Dock */}
-      <div className="rounded-2xl border border-[#313131] bg-[#131209] overflow-hidden flex flex-col">
+      <div className="rounded-2xl glossy-panel overflow-hidden flex flex-col shadow-2xl">
         {/* Viewport Control Bar */}
-        <div className="px-4 py-3 border-b border-[#313131] bg-[#181818]/80 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="px-4 py-3 border-b border-white/10 bg-[#141418]/80 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Cube className="size-5 text-[#9B9B9B]" />
             <h2 className="title-3 text-white">Interactive 3D Digital Twin</h2>
@@ -330,8 +331,8 @@ export function OverviewPage() {
                   key={machine.id}
                   onClick={() => selectMachine(machine.id)}
                   className={cn(
-                    "bg-[#181818] border rounded-xl p-5 cursor-pointer transition-all duration-300 flex flex-col justify-between hover:border-[#444444] active:scale-[0.98]",
-                    isSelected ? "border-white shadow-xl bg-[#1F1F1F]" : "border-[#313131]"
+                    "glossy-card p-5 cursor-pointer flex flex-col justify-between active:scale-[0.98]",
+                    isSelected ? "border-white/50 shadow-2xl ring-1 ring-white/30" : "border-white/10"
                   )}
                 >
                   <div>
@@ -387,10 +388,10 @@ export function OverviewPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           onClick={() => navigate("/app/sensors")}
-          className="bg-[#181818] border border-[#313131] rounded-xl p-5 hover:border-[#444444] cursor-pointer transition-colors duration-300 flex items-center justify-between group"
+          className="glossy-card p-5 cursor-pointer flex items-center justify-between group"
         >
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-[#1F1F1F] rounded-lg border border-[#313131]">
+            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
               <Waveform className="size-6 text-white" />
             </div>
             <div>
@@ -405,10 +406,10 @@ export function OverviewPage() {
 
         <div
           onClick={() => navigate("/app/dependencies")}
-          className="bg-[#181818] border border-[#313131] rounded-xl p-5 hover:border-[#444444] cursor-pointer transition-colors duration-300 flex items-center justify-between group"
+          className="glossy-card p-5 cursor-pointer flex items-center justify-between group"
         >
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-[#1F1F1F] rounded-lg border border-[#313131]">
+            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
               <Factory className="size-6 text-white" />
             </div>
             <div>
@@ -423,10 +424,10 @@ export function OverviewPage() {
 
         <div
           onClick={() => navigate("/app/resources")}
-          className="bg-[#181818] border border-[#313131] rounded-xl p-5 hover:border-[#444444] cursor-pointer transition-colors duration-300 flex items-center justify-between group"
+          className="glossy-card p-5 cursor-pointer flex items-center justify-between group"
         >
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-[#1F1F1F] rounded-lg border border-[#313131]">
+            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
               <Wrench className="size-6 text-white" />
             </div>
             <div>
