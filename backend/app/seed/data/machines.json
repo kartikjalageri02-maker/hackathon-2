@@ -1,0 +1,41 @@
+[
+  {
+    "id": "MCH001",
+    "name": "Precision CNC Milling Centre",
+    "type": "milling_centre",
+    "role_in_line": "upstream",
+    "nominal_throughput_uph": 120,
+    "criticality_weight": 0.95,
+    "model_url": "/models/milling_centre.glb",
+    "pos_x": -6.0,
+    "pos_y": 0.0,
+    "pos_z": 0.0,
+    "rot_y": 0.0
+  },
+  {
+    "id": "MCH002",
+    "name": "Transfer Conveyor",
+    "type": "conveyor",
+    "role_in_line": "midstream",
+    "nominal_throughput_uph": 120,
+    "criticality_weight": 0.80,
+    "model_url": "/models/conveyor.glb",
+    "pos_x": 0.0,
+    "pos_y": 0.0,
+    "pos_z": 0.0,
+    "rot_y": 0.0
+  },
+  {
+    "id": "MCH003",
+    "name": "Carton Packaging Machine",
+    "type": "packaging",
+    "role_in_line": "downstream",
+    "nominal_throughput_uph": 120,
+    "criticality_weight": 0.75,
+    "model_url": "/models/packaging.glb",
+    "pos_x": 6.0,
+    "pos_y": 0.0,
+    "pos_z": 0.0,
+    "rot_y": 0.0
+  }
+]

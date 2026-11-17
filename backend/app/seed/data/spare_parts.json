@@ -1,0 +1,90 @@
+[
+  {
+    "id": "SP001_BEARING_SET",
+    "name": "SKF 7205 Precision Angular Contact Bearing Set",
+    "quantity": 2,
+    "reorder_level": 4,
+    "lead_time_days": 5,
+    "alternative_part_id": "SP002_BEARING_ALT"
+  },
+  {
+    "id": "SP002_BEARING_ALT",
+    "name": "FAG 7205B High Speed Machine Spindle Bearing Pair",
+    "quantity": 3,
+    "reorder_level": 2,
+    "lead_time_days": 4,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP003_DRIVE_BELT",
+    "name": "Optibelt Omega 8M Reinforced Timing Belt",
+    "quantity": 0,
+    "reorder_level": 3,
+    "lead_time_days": 7,
+    "alternative_part_id": "SP004_HD_DRIVE_BELT"
+  },
+  {
+    "id": "SP004_HD_DRIVE_BELT",
+    "name": "Gates Poly Chain GT Carbon Synchronous Belt",
+    "quantity": 4,
+    "reorder_level": 2,
+    "lead_time_days": 6,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP005_HEATER_CARTRIDGE",
+    "name": "Watlow Firerod 500W High Temp Cartridge Heater",
+    "quantity": 8,
+    "reorder_level": 3,
+    "lead_time_days": 3,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP006_SEAL_KIT",
+    "name": "Festo DNC-63 Pneumatic Cylinder Seal Repair Kit",
+    "quantity": 5,
+    "reorder_level": 2,
+    "lead_time_days": 4,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP007_ROTARY_BLADE",
+    "name": "Hardened Tool Steel Flap Scoring Knife",
+    "quantity": 6,
+    "reorder_level": 2,
+    "lead_time_days": 8,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP008_FLEX_COUPLING",
+    "name": "R+W BK2 Metal Bellows Flexible Coupling",
+    "quantity": 3,
+    "reorder_level": 2,
+    "lead_time_days": 5,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP009_MOTOR_BEARING",
+    "name": "NSK 6206-2RS Deep Groove Ball Bearing",
+    "quantity": 7,
+    "reorder_level": 3,
+    "lead_time_days": 2,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP010_PRESSURE_REGULATOR",
+    "name": "SMC AR30 Precision Pneumatic Pressure Regulator",
+    "quantity": 4,
+    "reorder_level": 2,
+    "lead_time_days": 4,
+    "alternative_part_id": null
+  },
+  {
+    "id": "SP011_SERVO_ENCODER",
+    "name": "Heidenhain ECN 1313 Absolute Rotary Encoder",
+    "quantity": 1,
+    "reorder_level": 2,
+    "lead_time_days": 14,
+    "alternative_part_id": null
+  }
+]

@@ -1,0 +1,31 @@
+# Environments & Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+backend/*.db
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.npm/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Antigravity artifacts / logs
+.agent/
+brain/
+*.log
+
+# Secrets
+.env
+backend/.env

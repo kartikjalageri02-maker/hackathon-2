@@ -1,0 +1,58 @@
+[
+  {
+    "id": "TCH001",
+    "name": "Meera Iyer",
+    "specialisation": "Mechanical",
+    "availability": "Available",
+    "shift": "Morning",
+    "qualifications": [
+      { "machine_id": "MCH001", "level": 3 },
+      { "machine_id": "MCH002", "level": 2 }
+    ]
+  },
+  {
+    "id": "TCH002",
+    "name": "Arjun Sharma",
+    "specialisation": "Electrical",
+    "availability": "Available",
+    "shift": "Morning",
+    "qualifications": [
+      { "machine_id": "MCH001", "level": 2 },
+      { "machine_id": "MCH002", "level": 3 },
+      { "machine_id": "MCH003", "level": 2 }
+    ]
+  },
+  {
+    "id": "TCH003",
+    "name": "David Lindholm",
+    "specialisation": "Mechanical",
+    "availability": "Available",
+    "shift": "Evening",
+    "qualifications": [
+      { "machine_id": "MCH001", "level": 2 },
+      { "machine_id": "MCH002", "level": 3 }
+    ]
+  },
+  {
+    "id": "TCH004",
+    "name": "Vikram Seth",
+    "specialisation": "Mechatronics",
+    "availability": "Unavailable",
+    "shift": "Morning",
+    "qualifications": [
+      { "machine_id": "MCH001", "level": 3 },
+      { "machine_id": "MCH002", "level": 2 }
+    ]
+  },
+  {
+    "id": "TCH005",
+    "name": "Aisha Chen",
+    "specialisation": "Automation",
+    "availability": "Available",
+    "shift": "Morning",
+    "qualifications": [
+      { "machine_id": "MCH003", "level": 3 },
+      { "machine_id": "MCH002", "level": 2 }
+    ]
+  }
+]
